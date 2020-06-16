@@ -9,4 +9,4 @@
   register: phpfpm_st01
 - name: Show Status Service PHP-FPM
   debug:
-        var: phpfpm_st01.stdoutlines
+        var: phpfpm_st01.stdout_lines
