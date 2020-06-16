@@ -1,8 +1,12 @@
 ---
-- name: Start & Enable Service Nginx
-  command: systemctl --now enable nginx
-- name: Show status nginx
-  command: systemctl status nginx
-  register: sys01_nginx
-- debug:
-      var: sys01_nginx.results
+- name: Start and Enable Nginx
+  service:
+        name: nginx
+        state: started
+        enabled: yes
+- name: Check Nginx Work
+  command: service nginx status
+  register: nginx_info02
+- name: Show INFO NGINX Work
+  debug:
+      var: nginx_info02.stdout_lines

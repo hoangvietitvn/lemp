@@ -1,4 +1,6 @@
 ---
 - hosts: all
   roles:
-  - nginx
+    - nginx
+    - mariadb
+    - php74

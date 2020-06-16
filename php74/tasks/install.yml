@@ -1,0 +1,23 @@
+---
+- name: Install REMI REPO
+  yum:
+       name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+       state: present
+- name: Enable Module REMI7.4
+  command: dnf module enable php:remi-7.4 -y
+- name: Install PHP 7.4
+  yum:
+       name: 
+          - php
+          - php-fpm
+          - php-common
+          - php-mbstring
+          - php-pdo
+          - php-opcache
+          - php-memcached
+          - php-gd
+          - php-mysqlnd
+       state: latest
+       
+        
+

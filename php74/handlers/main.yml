@@ -1,2 +1,7 @@
 ---
 # handlers file for php74
+- name: Restart PHP-FPM
+  service:
+          name: php-fpm
+          state: restarted
+          enabled: yes

@@ -1,0 +1,12 @@
+---
+- name: Add file PHP INFO
+  copy:
+    dest: /usr/share/nginx/html/info.php
+    content:
+       <?php phpinfo(); ?>
+- name: Check info PHP
+  command: curl -I http://localhost/info.php
+  register: phpinfo
+- name: Show INFO PHP
+  debug:
+     var: phpinfo.stdout_lines

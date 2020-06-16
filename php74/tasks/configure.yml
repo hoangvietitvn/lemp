@@ -1,0 +1,13 @@
+---
+######### LINK PHP-FPM TO NGINX ###############
+- name: Replace User in www.conf is nginx
+  replace:
+        path: /etc/php-fpm.d/www.conf
+        regexp: 'user = apache'
+        replace: "user = {{ user_www }}"
+- name: Replace Group in www.conf is nginx
+  replace:
+        path: /etc/php-fpm.d/www.conf
+        regexp: 'group = apache'
+        replace: "group = {{ group_www }}"
+

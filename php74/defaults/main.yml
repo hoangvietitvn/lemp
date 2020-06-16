@@ -1,2 +1,4 @@
 ---
 # defaults file for php74
+user_www: "nginx"
+group_www: "nginx"

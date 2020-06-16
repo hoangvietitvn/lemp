@@ -31,13 +31,9 @@
     owner: root
     group: root
     mode: '0644'
-- name: check config nginx
-  shell: nginx -t
-  register: nginx01
-- debug:
-       var: nginx01.stdout.lines
 - name: Restart Nginx
   service:
       name: nginx 
       state: restarted
+      enabled: yes
 

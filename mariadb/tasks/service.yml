@@ -4,3 +4,9 @@
         name: mariadb
         state: started
         enabled: yes
+- name: Check Service MariaDB
+  command: service mariadb status
+  register: mariadb_st01
+- name: Show MariaDB status info
+  debug:
+        var: mariadb_st01.stdout_lines

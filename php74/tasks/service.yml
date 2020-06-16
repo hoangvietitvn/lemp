@@ -1,0 +1,12 @@
+---
+- name: Start and Enable PHP-FPM
+  service:
+      name: php-fpm
+      state: started
+      enabled: yes
+- name: Get Status Service PHP-FPM
+  command: service php-fpm status
+  register: phpfpm_st01
+- name: Show Status Service PHP-FPM
+  debug:
+        var: phpfpm_st01.stdoutlines
