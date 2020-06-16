@@ -1,0 +1,10 @@
+---
+- name: Deamon Reload
+  command: systemctl daemon-reload
+- name: Start & Enable Service Nginx
+  command: systemctl --now enable nginx
+- name: Show status nginx
+  command: systemctl status nginx
+  register: sys01_nginx
+- debug:
+      var: sys01_nginx.results

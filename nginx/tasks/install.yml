@@ -1,0 +1,14 @@
+---
+- name: Add Nginx Repo file
+  copy:
+      src: ./nginx/files/nginx.repo
+      dest: /etc/yum.repos.d/
+      owner: root
+      group: root
+- name: Enable Nginx Mainline
+  shell: yum-config-manager --enable nginx-mainline
+- name: Install Nginx
+  yum: 
+      name: nginx 
+      state: latest
+      

@@ -1,0 +1,7 @@
+---
+# tasks file for nginx
+- import_tasks: support_packages.yml
+- import_tasks: install.yml
+- import_tasks: service.yml
+- import_tasks: configure.yml
+- import_tasks: openport.yml

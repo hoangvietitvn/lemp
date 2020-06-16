@@ -1,0 +1,7 @@
+---
+- name: Install Epel-release & Yum-utils
+  yum:
+      name: epel-release,yum-utils
+      state: latest
+
+  

@@ -1,0 +1,43 @@
+---
+#- name: Backup Current Config Nginx
+#  shell: mv /etc/nginx/nginx.conf nginx.bak ; mv /etc/nginx/conf.d/default.conf default.bak
+- name: stat nginx.conf
+  stat: path=/etc/nginx/nginx.conf
+  register: nginx_stat
+
+- name: Move nginx.conf to nginx.bak
+  command: mv /etc/nginx/nginx.conf /etc/nginx/nginx.bak
+  when: nginx_stat.stat.exists
+
+- name: stat default.conf
+  stat: path=/etc/nginx/conf.d/default.conf
+  register: vnginx_stat
+
+- name: Move nginx.conf to nginx.bak
+  command: mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.bak
+  when: vnginx_stat.stat.exists
+
+- name: Copy file nginx.conf with owner and permissions
+  copy:
+    src: ./nginx/files/nginx.conf
+    dest: /etc/nginx/
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy file default.conf with owner and permissions
+  copy:
+    src: ./nginx/files/default.conf
+    dest: /etc/nginx/conf.d
+    owner: root
+    group: root
+    mode: '0644'
+- name: check config nginx
+  shell: nginx -t
+  register: nginx01
+- debug:
+       var: nginx01.stdout.lines
+- name: Restart Nginx
+  service:
+      name: nginx 
+      state: restarted
+
