@@ -1,6 +1,4 @@
 ---
-- name: Deamon Reload
-  command: systemctl daemon-reload
 - name: Start & Enable Service Nginx
   command: systemctl --now enable nginx
 - name: Show status nginx

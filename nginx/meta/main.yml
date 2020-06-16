@@ -1,6 +1,6 @@
 galaxy_info:
   author: Nguyen Hoang Viet
-  description: Role Install NGINX Mainline
+  description: Roles Install NGINX Mainline
   company: DUALCHECKINC
 
   # If the issue tracker for your role is not on github, uncomment the
